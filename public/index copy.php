@@ -1,3 +1,8 @@
+<?php
+$categorias = include('../actions/get-category.php');
+$artistas = include('../actions/get-artists.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -213,103 +218,81 @@
 					</div>
 				</div>
 				<!-- Video Section END -->
+
 				<!-- Mostrador Designers -->
 				<div class="section-full bg-white content-inner-1">
 					<div class="container">
 						<div class="section-head text-center">
 							<h2 class="head-title">Our Designers</h2>
-							<p>Whether you are a digital artist in search of new horizons or an event organizer in Europe seeking to elevate your event with Mexican design talent,
-								VIONS is your ideal partner for innovative visual solutions and creative excellence.</p>
+							<p>Whether you are a digital artist in search of new horizons...</p>
 						</div>
 						<div class="row">
 							<div class="col-lg-12 text-center">
+
 								<div class="site-filters filter-style1 clearfix m-b20">
 									<ul class="filters" data-toggle="buttons">
 										<li data-filter="" class="btn active"><input type="radio"><a href="#"><span>All</span></a></li>
-										<li data-filter="abstract" class="btn"><input type="radio"><a href="#"><span>Abstract</span></a></li>
-										<li data-filter="2D" class="btn"><input type="radio"><a href="#"><span>2D</span></a></li>
-										<li data-filter="mockup" class="btn"><input type="radio"><a href="#"><span>Mockup</span></a></li>
-										<li data-filter="audio" class="btn"><input type="radio"><a href="#"><span>Audiovisual</span></a></li>
+										<?php foreach ($categorias as $categoria): ?>
+											<li data-filter="categoria-<?= htmlspecialchars($categoria['id']) ?>" class="btn">
+												<input type="radio"><a href="#"><span><?= htmlspecialchars($categoria['nombre']) ?></span></a>
+											</li>
+										<?php endforeach; ?>
 									</ul>
 								</div>
+
+								<div class="clearfix">
+									<ul id="masonry" class="dlab-gallery-listing gallery mfp-gallery text-center portfolio-bx p-l0">
+										<?php foreach ($artistas as $artista): ?>
+											<li class="card-container col-lg-3 col-md-4 col-sm-6 p-lr0 categoria-<?= htmlspecialchars($artista['categoria_id']) ?>">
+												<div class="dlab-media dlab-img-overlay1 dlab-img-effect portbox1">
+													<img src="/uploads/<?= htmlspecialchars($artista['miniatura']) ?>" alt="Artista Miniatura" />
+													<div class="overlay-bx">
+														<div class="portinner">
+															<span><?= htmlspecialchars($artista['categoria']) ?></span>
+															<h3 class="port-title"><?= htmlspecialchars($artista['nombre']) ?></h3>
+															<a href="portfolio.php?artist=<?= urlencode($artista['nombre']) ?>" class="btn outline white outline-2 radius-xl">Ir a portafolio</a>
+														</div>
+													</div>
+												</div>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+
+
+
 							</div>
 						</div>
-					</div>
-					<div class="clearfix">
-						<ul id="masonry" class="dlab-gallery-listing gallery mfp-gallery text-center portfolio-bx p-l0">
-							<li class="card-container col-lg-3 col-md-4 col-sm-6 p-lr0 abstract wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s">
-								<div class="dlab-media dlab-img-overlay1 dlab-img-effect portbox1">
-									<img src="images/portfolio/portfolio-box1/pic1.png" alt="" />
-									<div class="overlay-bx">
-										<div class="portinner">
-											<span>Graphic Designer</span>
-											<h3 class="port-title"><a href="Uqiko.html">Uqiko</a></h3>
-											<a href="Uqiko.php" class="btn outline white outline-2 radius-xl">View Project</a>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="card-container col-lg-3 col-md-4 col-sm-6 p-lr0 mockup abstract wow fadeIn" data-wow-duration="2s" data-wow-delay="0.4s">
-								<div class="dlab-media dlab-img-overlay1 dlab-img-effect portbox1">
-									<img src="images/portfolio/portfolio-box1/pic2.jpg" alt="" />
-									<div class="overlay-bx">
-										<div class="portinner">
-											<span>Graphic Designer</span>
-											<h3 class="port-title"><a href="AugustoFlores.html">Augusto Flores</a></h3>
-											<a href="AugustoFlores.php" class="btn outline white outline-2 radius-xl">View Project</a>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="card-container col-lg-3 col-md-4 col-sm-6 p-lr0 2D wow fadeIn" data-wow-duration="2s" data-wow-delay="0.8s">
-								<div class="dlab-media dlab-img-overlay1 dlab-img-effect portbox1">
-									<img src="images/portfolio/portfolio-box1/pic4.jpeg" alt="" />
-									<div class="overlay-bx">
-										<div class="portinner">
-											<span>Graphic Designer</span>
-											<h3 class="port-title"><a href="Sergio.html">Sergio</a></h3>
-											<a href="Sergio.php" class="btn outline white outline-2 radius-xl">View Project</a>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="card-container col-lg-3 col-md-4 col-sm-6 p-lr0 abstract wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s">
-								<div class="dlab-media dlab-img-overlay1 dlab-img-effect portbox1">
-									<img src="images/portfolio/portfolio-box1/pic3.png" alt="" />
-									<div class="overlay-bx">
-										<div class="portinner">
-											<span>Graphic Designer</span>
-											<h3 class="port-title"><a href="JavierAm.html">JavierAm</a></h3>
-											<a href="JavierAm.php" class="btn outline white outline-2 radius-xl">View Project</a>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- Projects End -->
-			<!-- Pricing Table -->
-			<div class="section-full bg-white content-inner">
-				<div class="container">
-					<div class="section-head text-center">
-						<h2 class="head-title">Join Us</h2>
-						<p>At VIONS, we seamlessly blend innovative design and exceptional DJ talent, offering a unique platform that connects visionary digital artists and top-tier Mexican DJs with high-profile
-							European events. Elevate your next event with our creative expertise and musical excellence.</p>
-						<a href="" class="btn purple primary radius-xl"><span class="text-white">Contact Us</span></a>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Content END-->
+		<!-- Projects End -->
+		<!-- Pricing Table -->
+		<div class="section-full bg-white content-inner">
+			<div class="container">
+				<div class="section-head text-center">
+					<h2 class="head-title">Join Us</h2>
+					<p>At VIONS, we seamlessly blend innovative design and exceptional DJ talent, offering a unique platform that connects visionary digital artists and top-tier Mexican DJs with high-profile
+						European events. Elevate your next event with our creative expertise and musical excellence.</p>
+					<a href="" class="btn purple primary radius-xl"><span class="text-white">Contact Us</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Content END-->
 
 	</div>
 	<!--Footer -->
 	<?php include('includes/footer.php'); ?>
 	<!-- Footer END -->
 	<!-- JAVASCRIPT FILES ========================================= -->
-	<script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+
+	<script src="js/jquery.min.js"></script>
+	<script src="plugins/imagesloaded/imagesloaded.js"></script>
+	<script src="plugins/masonry/masonry-3.1.4.js"></script>
+	<script src="plugins/masonry/masonry.filter.js"></script>
+
 	<script src="plugins/wow/wow.js"></script><!-- WOW JS -->
 	<script src="plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 	<script src="plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
@@ -318,9 +301,6 @@
 	<script src="plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
 	<script src="plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
 	<script src="plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
-	<script src="plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
-	<script src="plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
-	<script src="plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
 	<script src="plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
 	<script src="plugins/scroll/scrollbar.min.js"></script><!-- OWL SLIDER -->
 	<script src="js/custom.js"></script><!-- CUSTOM FUCTIONS  -->

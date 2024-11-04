@@ -89,37 +89,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- inner page banner END -->
-			<!-- Our Gallery -->
-			<div class="section-full content-inner-1 mfp-gallery">
-				<div class="container">
-					<div class="row our-gallery">
-						<div class="col-lg-6 col-md-6 col-sm-6 m-b30 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.4s">
-							<div class="dlab-box portfolio-bx style2 project-media">
-								<div class="dlab-media dlab-img-overlay1 dlab-img-effect">
-									<a href="javascript:void(0);"> <img src="images/Diseñadores/Sergio/pic2.jpg" alt=""> </a>
-									<div class="overlay-bx">
-										<a href="images/Diseñadores/Sergio/pic2.jpg" class="mfp-link" title="Cover-Maic"><i class="ti-zoom-in"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.6s">
-							<div class="dlab-box portfolio-bx style2 project-media">
-								<div class="dlab-media dlab-img-overlay1 dlab-img-effect">
-									<a href="javascript:void(0);"> <img src="images/Diseñadores/Sergio/pic3.jpg" alt=""> </a>
-									<div class="overlay-bx">
-										<a href="images/Diseñadores/Sergio/pic3.jpg" class="mfp-link" title="XTC-svart.exe"><i class="ti-zoom-in"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Our Gallery END -->
-			<!-- Project Video Section-->
-			<!-- Project Info -->
 			<div class="section-full content-inner project-content-info">
 				<div class="container">
 					<div class="row">
@@ -184,6 +153,70 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="section-full">
+	<div class="portfolio-carousel full-vh mfp-gallery-with-owl owl-carousel owl-btn-center-lr">
+		<div class="item">
+			<div class="dlab-box portfolio-bx style2">
+				<div class="dlab-media dlab-img-overlay1 overlay-black dlab-img-effect"> 
+					<a href="javascript:void(0);"> 
+						<img src="images/Diseñadores/Sergio/pic2.jpg" alt=""> 
+					</a>
+					<div class="overlay-bx">
+						<a href="images/Diseñadores/Sergio/pic2.jpg" class="mfp-link" title="Title Come Here">
+							<i class="ti-zoom-in"></i>
+						</a>
+						<div class="overlay-icon align-b text-white"> 
+							<div class="text-white text-left port-box">
+								<h3 class="title"><a href="project-detail-1.html">Brilliant Ways To Advertise</a></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="dlab-box portfolio-bx style2">
+				<div class="dlab-media dlab-img-overlay1 overlay-black dlab-img-effect"> 
+					<a href="javascript:void(0);"> 
+						<img src="images/Diseñadores/Sergio/pic3.jpg" alt=""> 
+					</a>
+					<div class="overlay-bx">
+						<a href="images/Diseñadores/Sergio/pic3.jpg" class="mfp-link" title="Title Come Here">
+							<i class="ti-zoom-in"></i>
+						</a>
+						<div class="overlay-icon align-b text-white"> 
+							<div class="text-white text-left port-box">
+								<h3 class="title"><a href="project-detail-2.html">Quick Tips For Interior</a></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="dlab-box portfolio-bx style2">
+				<div class="dlab-media dlab-img-overlay1 overlay-black dlab-img-effect"> 
+					<a href="javascript:void(0);"> 
+						
+						<img src="images/Diseñadores/Sergio/vid1.mp4" alt=""> 
+					</a>
+					<div class="overlay-bx">
+						<a href="images/Diseñadores/Sergio/vid1.mp4" class="mfp-link" title="Title Come Here">
+							<i class="ti-zoom-in"></i>
+						</a>
+						<div class="overlay-icon align-b text-white"> 
+							<div class="text-white text-left port-box">
+								<h3 class="title"><a href="project-detail-3.html">Ten Shocking Facts About</a></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 					<!-- op img larg 
 				<div class="section-full content-inner-1 mfp-gallery">
 					<div class="container">
@@ -213,6 +246,38 @@
 					End img larg -->
 				</div>
 			</div>
+			<!-- inner page banner END -->
+			<!-- Our Gallery -->
+			<div class="section-full content-inner-1 mfp-gallery">
+				<div class="container">
+					<div class="row our-gallery">
+						<div class="col-lg-6 col-md-6 col-sm-6 m-b30 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.4s">
+							<div class="dlab-box portfolio-bx style2 project-media">
+								<div class="dlab-media dlab-img-overlay1 dlab-img-effect">
+									<a href="javascript:void(0);"> <img src="images/Diseñadores/Sergio/pic2.jpg" alt=""> </a>
+									<div class="overlay-bx">
+										<a href="images/Diseñadores/Sergio/pic2.jpg" class="mfp-link" title="Cover-Maic"><i class="ti-zoom-in"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.6s">
+							<div class="dlab-box portfolio-bx style2 project-media">
+								<div class="dlab-media dlab-img-overlay1 dlab-img-effect">
+									<a href="javascript:void(0);"> <img src="images/Diseñadores/Sergio/pic3.jpg" alt=""> </a>
+									<div class="overlay-bx">
+										<a href="images/Diseñadores/Sergio/pic3.jpg" class="mfp-link" title="XTC-svart.exe"><i class="ti-zoom-in"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Our Gallery END -->
+			<!-- Project Video Section-->
+			<!-- Project Info -->
+			
 			<!-- blog grid END -->
 		</div>
 		<!-- contact area END -->

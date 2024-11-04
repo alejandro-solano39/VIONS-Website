@@ -3,8 +3,8 @@
         <div class="main-bar clearfix">
             <div class="container clearfix">
                 <!-- website logo -->
-                <a href="/" class="logo-header mostion">
-                    <img src="../images/Vions.png" alt="Website Logo">
+                <a href="../index.php" class="logo-header mostion">
+                    <img src="../../public/images/Vions.png" alt="Website Logo">
                 </a>
                 <!-- nav toggle button -->
                 <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
