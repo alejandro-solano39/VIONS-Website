@@ -1,34 +1,43 @@
 <?php
 include_once(__DIR__ . '/../config/config.php');
 
-// Conectar a la base de datos
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Inicializar el array de categorías
-$categorias = [];
-
-// Consulta para obtener categorías
-$result = $conn->query("SELECT * FROM category");
-
-// Verificar si la consulta fue exitosa
-if ($result === false) {
-    die("Error en la consulta SQL: " . $conn->error);
-}
-
-// Procesar los resultados de la consulta
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $categorias[] = $row;
+function connectDatabase() {
+    static $conn = null;
+    if ($conn === null) {
+        $conn = new mysqli("p:" . DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($conn->connect_error) {
+            die("Conexión fallida: " . $conn->connect_error);
+        }
     }
+    return $conn;
 }
 
-$conn->close();
+// Función única para obtener categorías por grupo
+function getCategoriesByGroup($categoryGroup) {
+    $conn = connectDatabase();
+    $query = "SELECT id, nombre FROM category WHERE category_group = ?";
+    $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        die("Error al preparar la consulta: " . $conn->error);
+    }
+    $stmt->bind_param("s", $categoryGroup);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $categories = [];
+    while ($row = $result->fetch_assoc()) {
+        $categories[] = $row;
+    }
+    $stmt->close();
+    return $categories;
+}
 
-// Retornar el array de categorías
-return $categorias;
+// Retornar las funciones directamente
+return [
+    'getDesignCategories' => function() {
+        return getCategoriesByGroup('design');
+    },
+    'getMusicCategories' => function() {
+        return getCategoriesByGroup('music');
+    }
+];
 ?>

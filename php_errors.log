@@ -1,0 +1,2 @@
+[07-Apr-2025 04:03:48 UTC] Error registrando la visita: SQLSTATE[HY000]: General error: 1366 Incorrect decimal value: 'Unknown' for column 'latitude' at row 1
+[07-Apr-2025 04:07:19 UTC] Error registrando la visita: SQLSTATE[HY000]: General error: 1366 Incorrect decimal value: 'Unknown' for column 'latitude' at row 1

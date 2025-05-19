@@ -1,27 +1,42 @@
 <?php
 include_once(__DIR__ . '/../config/config.php');
 
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+try {
+    $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_PERSISTENT         => true, 
+    ];
+    $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
 
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+    $sql = "SELECT 
+                p.id, 
+                p.nombre, 
+                p.miniatura, 
+                p.categoria_id, 
+                p.activo, 
+                c.nombre AS categoria
+            FROM 
+                portfolios p
+            INNER JOIN 
+                category c 
+            ON 
+                p.categoria_id = c.id
+            WHERE 
+                p.activo = 1
+            ORDER BY 
+                p.fecha_registro";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
 
-$artistas = [];
-$sql = "SELECT portfolios.nombre, portfolios.miniatura, portfolios.categoria_id, category.nombre AS categoria
-        FROM portfolios
-        INNER JOIN category ON portfolios.categoria_id = category.id
-        LIMIT 4";
-$result = $conn->query($sql);
+    $artistas = $stmt->fetchAll();
 
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $artistas[] = $row;
+    if (empty($artistas)) {
+        echo "No se encontraron portafolios.";
     }
-} else {
-    echo "No se encontraron portafolios.";
-}
 
-$conn->close();
-return $artistas;
-?>
+    return $artistas;
+} catch (PDOException $e) {
+    die("Error en la conexión o consulta: " . $e->getMessage());
+}

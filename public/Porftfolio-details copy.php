@@ -94,7 +94,7 @@
 
 			<section class="home">
 				<div class="home-img">
-					<img src="images/Diseñadores/Sergio/pic5.jpeg" alt="">
+					<img src="images/Diseñadores/Sergio/pic5.jpeg" alt="profile picture" loading="lazy">
 				</div>
 				<div class="home-content">
 					<h1>Hi, It's <span>Sergio</span></h1>
