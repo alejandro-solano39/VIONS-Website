@@ -12,13 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $contacto = $_POST['contact'];
     $ubicacion = $_POST['location'];
     $categoria_id = $_POST['category'];
+    $youtubeVideos = isset($_POST['youtube_videos']) ? json_encode($_POST['youtube_videos']) : json_encode([]);
 
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn->connect_error) {
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    // Recuperar datos existentes si es una edición
     $existingData = [];
     if ($id) {
         $result = $conn->query("SELECT * FROM portfolios WHERE id = $id");
@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Crear carpeta si no existe
     function crearCarpeta($nombre)
     {
         $nombreCarpeta = preg_replace('/[^A-Za-z0-9_-]/', '_', $nombre);
@@ -40,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $targetDir = crearCarpeta($nombre);
 
-    // Procesar imagen de perfil
+    // Imagen de perfil
     $imagenPerfil = $existingData['imagen_perfil'] ?? null;
     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
         $profileFileName = basename($_FILES['profile_image']['name']);
@@ -50,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Procesar miniatura
+    // Miniatura
     $miniatura = $existingData['miniatura'] ?? null;
     if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === UPLOAD_ERR_OK) {
         $thumbnailFileName = basename($_FILES['thumbnail']['name']);
@@ -60,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Procesar imágenes del slider
+    // Slider
     $existingSliderImages = json_decode($existingData['slider_images'] ?? '[]', true);
     $newSliderImages = [];
     if (isset($_FILES['slider_images'])) {
@@ -96,17 +95,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sliderItemsJson = json_encode(array_values($sliderImagesFinal));
 
-    // Insertar o actualizar en la base de datos
     if ($id) {
-        $stmt = $conn->prepare("UPDATE portfolios SET categoria_id=?, nombre=?, rol=?, anio_experiencia=?, especialidad=?, descripcion=?, contacto=?, ubicacion=?, imagen_perfil=?, miniatura=?, slider_images=? WHERE id=?");
-        $stmt->bind_param("issssssssssi", $categoria_id, $nombre, $rol, $anio_experiencia, $especialidad, $descripcion, $contacto, $ubicacion, $imagenPerfil, $miniatura, $sliderItemsJson, $id);
+        // UPDATE
+        $stmt = $conn->prepare("UPDATE portfolios SET categoria_id=?, nombre=?, rol=?, anio_experiencia=?, especialidad=?, descripcion=?, contacto=?, ubicacion=?, imagen_perfil=?, miniatura=?, slider_images=?, youtube_videos=? WHERE id=?");
+        $stmt->bind_param("isssssssssssi", $categoria_id, $nombre, $rol, $anio_experiencia, $especialidad, $descripcion, $contacto, $ubicacion, $imagenPerfil, $miniatura, $sliderItemsJson, $youtubeVideos, $id);
     } else {
-        $stmt = $conn->prepare("INSERT INTO portfolios (categoria_id, nombre, rol, anio_experiencia, especialidad, descripcion, contacto, ubicacion, imagen_perfil, miniatura, slider_images) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("issssssssss", $categoria_id, $nombre, $rol, $anio_experiencia, $especialidad, $descripcion, $contacto, $ubicacion, $imagenPerfil, $miniatura, $sliderItemsJson);
+        // INSERT
+        $stmt = $conn->prepare("INSERT INTO portfolios (categoria_id, nombre, rol, anio_experiencia, especialidad, descripcion, contacto, ubicacion, imagen_perfil, miniatura, slider_images, youtube_videos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssssssssss", $categoria_id, $nombre, $rol, $anio_experiencia, $especialidad, $descripcion, $contacto, $ubicacion, $imagenPerfil, $miniatura, $sliderItemsJson, $youtubeVideos);
     }
 
     if ($stmt->execute()) {
-        echo "Datos guardados exitosamente.";
         header("Location: ../dashboard/index.php");
         exit();
     } else {
@@ -117,3 +116,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->close();
 }
 ?>
+

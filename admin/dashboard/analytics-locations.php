@@ -7,11 +7,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
-// Paso 2: Consulta para obtener las ubicaciones (latitud, longitud y total_visitas) y más datos
+// Consulta para obtener las ubicaciones (latitud, longitud y total_visitas) y más datos
 $sql = "SELECT id, latitude, longitude, origin, country, date_time, region, device_type, city, source, COUNT(*) AS total_visitas 
         FROM visits 
         GROUP BY id, latitude, longitude, origin, country, date_time, region, device_type, city, source";
+
 $ubicaciones = [];
 
 // Ejecutamos la consulta utilizando PDO
@@ -38,7 +38,6 @@ try {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -54,10 +53,6 @@ try {
     <main>
         <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
             <h2 class="mt-4 mb-3">Mapa y Tabla Dinámica</h2>
-
-            <!-- <button class="btn btn-primary">
-                <i class="fas fa-download me-1"></i> Exportar Datos
-            </button> -->
         </div>
 
         <div class="card shadow-sm mb-4">
@@ -90,8 +85,8 @@ try {
                         <tbody>
                             <?php foreach ($ubicaciones as $ubicacion): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars(string: $ubicacion['id']); ?></td>
-                                    <td><?php echo htmlspecialchars(string: $ubicacion['origin']); ?></td>
+                                    <td><?php echo htmlspecialchars($ubicacion['id']); ?></td>
+                                    <td><?php echo htmlspecialchars($ubicacion['origin']); ?></td>
                                     <td><?php echo htmlspecialchars($ubicacion['country']); ?></td>
                                     <td>
                                         <?php
@@ -110,49 +105,53 @@ try {
                     </table>
                 </div>
             </div>
+        </div>
 
-            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    </main>
 
-            <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <!-- Scripts: con defer -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" defer></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js" defer></script>
 
-            <script>
-                console.log(<?php echo json_encode($ubicaciones); ?>);
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ubicaciones = <?php echo json_encode($ubicaciones); ?>;
 
-                var ubicaciones = <?php echo json_encode($ubicaciones); ?>;
+            const ubicacionesValidas = ubicaciones.filter(u =>
+                u.latitud && u.longitud &&
+                u.latitud >= -90 && u.latitud <= 90 &&
+                u.longitud >= -180 && u.longitud <= 180
+            );
 
-                var ubicacionesValidas = ubicaciones.filter(function(ubicacion) {
-                    return ubicacion.latitud && ubicacion.longitud &&
-                        ubicacion.latitud >= -90 && ubicacion.latitud <= 90 &&
-                        ubicacion.longitud >= -180 && ubicacion.longitud <= 180;
+            if (ubicacionesValidas.length > 0) {
+                const map = L.map('map').setView([19.432608, -99.133209], 5);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Capa de calor
+                L.heatLayer(
+                    ubicacionesValidas.map(u => [u.latitud, u.longitud, u.total_visitas || 1]),
+                    {
+                        radius: 25,
+                        blur: 15,
+                        maxZoom: 17
+                    }
+                ).addTo(map);
+
+                // Si quieres marcadores, solo los primeros 100
+                ubicacionesValidas.slice(0, 100).forEach(u => {
+                    L.marker([u.latitud, u.longitud])
+                        .addTo(map)
+                        .bindPopup("Visitas: " + u.total_visitas);
                 });
 
-                if (ubicacionesValidas.length > 0) {
-                    var map = L.map('map').setView([19.432608, -99.133209], 5);
-
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    }).addTo(map);
-
-                    // Crear una capa de calor
-                    var heat = L.heatLayer(
-                        ubicacionesValidas.map(function(ubicacion) {
-                            return [ubicacion.latitud, ubicacion.longitud, ubicacion.total_visitas || 1];
-                        }), {
-                            radius: 25,
-                            blur: 15,
-                            maxZoom: 17
-                        }
-                    ).addTo(map);
-
-                    ubicacionesValidas.forEach(function(ubicacion) {
-                        L.marker([ubicacion.latitud, ubicacion.longitud])
-                            .addTo(map)
-                            .bindPopup("Visitas: " + ubicacion.total_visitas);
-                    });
-                } else {
-                    alert("No se encontraron datos válidos para las ubicaciones.");
-                }
-            </script>
+            } else {
+                alert("No se encontraron datos válidos para las ubicaciones.");
+            }
+        });
+    </script>
 
 </body>
 

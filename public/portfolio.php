@@ -85,8 +85,7 @@ $artistas = array_filter($artistas, callback: fn($artista) => $artista['activo']
 <body id="bg">
 	<div class="page-wraper">
 		<div id="loading-area"></div>
-		<div class="page-content bg-dark">
-			<header class="site-header mo-left">
+		<div class="page-content bg-dark">		<header class="site-header mo-left">
 				<?php require_once('includes/navbar.php'); ?>
 			</header>
 			<div class="page-content bg-white">

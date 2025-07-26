@@ -239,18 +239,26 @@ if ($id) {
                                 </div>
 
                                 <div class="form-row">
-                                    <label for="slider_videos" class="form-label">Enlaces de Videos de YouTube</label>
-                                    <?php
-                                    if (isset($registro['youtube_videos']) && !empty($registro['youtube_videos'])):
-                                        $youtubeVideos = json_decode($registro['youtube_videos'], true);
-                                        foreach ($youtubeVideos as $videoId):
-                                    ?>
-                                            <input type="text" class="form-control mb-2" name="slider_videos[]" placeholder="Ingrese un enlace de YouTube" value="https://www.youtube.com/watch?v=<?php echo htmlspecialchars($videoId); ?>">
-                                    <?php endforeach;
-                                    endif; ?>
-                                    <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="addVideoField()">Agregar otro enlace</button>
-                                    <div id="video-fields"></div>
-                                </div>
+    <label for="youtube_videos" class="form-label">Enlaces de Videos de YouTube</label>
+
+    <?php
+    if (isset($registro['youtube_videos']) && !empty($registro['youtube_videos'])):
+        $youtubeVideos = json_decode($registro['youtube_videos'], true);
+        foreach ($youtubeVideos as $videoUrl):
+    ?>
+        <input type="url" class="form-control mb-2" name="youtube_videos[]" placeholder="Ingrese un enlace de YouTube" value="<?php echo htmlspecialchars($videoUrl); ?>">
+    <?php
+        endforeach;
+    else:
+    ?>
+        <input type="url" class="form-control mb-2" name="youtube_videos[]" placeholder="Ingrese un enlace de YouTube">
+    <?php endif; ?>
+
+    <div id="video-fields"></div>
+
+    <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="addVideoField()">Agregar otro enlace</button>
+</div>
+
 
                                 <div class="form-row">
                                     <button type="submit" class="btn btn-custom mt-3">Enviar Formulario</button>
@@ -291,14 +299,15 @@ if ($id) {
             });
         }
 
-        function addVideoField() {
-            const newField = document.createElement('input');
-            newField.type = 'text';
-            newField.name = 'slider_videos[]';
-            newField.placeholder = 'Ingrese un enlace de YouTube';
-            newField.classList.add('form-control', 'mb-2');
-            document.getElementById('video-fields').appendChild(newField);
-        }
+      function addVideoField() {
+    const container = document.getElementById('video-fields');
+    const input = document.createElement('input');
+    input.type = 'url';
+    input.name = 'youtube_videos[]';
+    input.className = 'form-control mb-2';
+    input.placeholder = 'Ingrese un enlace de YouTube';
+    container.appendChild(input);
+}
 
         function removeSliderImage(button) {
             const container = button.closest('.slider-image-item');

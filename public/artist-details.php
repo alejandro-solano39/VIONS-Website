@@ -171,15 +171,15 @@ function esVideo($ruta)
 							</a>
 						</div>
 					<?php endforeach; ?>
-					<?php foreach ($youtube_videos as $videoId): ?>
+					<?php foreach ($youtube_videos as $videoUrl): ?>
+						<?php
+						$videoId = obtenerIdVideoYoutube($videoUrl);
+						if (!$videoId) continue; // si no se puede extraer el ID, lo salta
+						?>
 						<div class="item">
 							<a href="https://www.youtube.com/embed/<?= htmlspecialchars($videoId) ?>" data-fancybox="gallery" data-type="iframe">
 								<img src="https://img.youtube.com/vi/<?= htmlspecialchars($videoId) ?>/maxresdefault.jpg" alt="Portfolio Video" loading="lazy">
-								<div class="zoom-icon">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-										<path fill="white" d="M15.5 14h-.79l-.28-.27a6.47 6.47 0 0 0 1.48-5.34c-.6-2.89-3.1-5.15-6.08-5.34A6.5 6.5 0 1 0 14 14.43l.27.28v.79l5 4.99L20.49 19l-5-4.99zM10.5 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"></path>
-									</svg>
-								</div>
+								<div class="zoom-icon">...</div>
 							</a>
 						</div>
 					<?php endforeach; ?>
