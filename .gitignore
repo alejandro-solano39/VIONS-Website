@@ -8,12 +8,4 @@
 public/plugins/
 admin/uploads/
 node_modules/
-*.mp4
-*.zip
-node_modules/
 vendor/
-
-echo "*.mp4" >> .gitignore
-echo "*.zip" >> .gitignore
-echo "node_modules/" >> .gitignore
-echo "vendor/" >> .gitignore
