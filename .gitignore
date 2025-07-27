@@ -1,6 +1,10 @@
-node_modules/
+# Archivos grandes que no deberían subirse
 *.mp4
 *.zip
 *.rar
 *.psd
-vendor/
+
+# Carpetas que no deben ir al repo
+public/plugins/
+admin/uploads/
+node_modules/
