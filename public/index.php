@@ -1,15 +1,15 @@
 <?php
-$categoryFunctions = include('../actions/get-category.php');
-$djFunctions = include('../actions/get-all-DJs.php');
+$categoryFunctions = include('../src/actions/get-category.php');
+$djFunctions = include('../src/actions/get-all-DJs.php');
 
 $categorias = call_user_func($categoryFunctions['getDesignCategories']);
-$artistas = require_once('../actions/get-artists.php');
+$artistas = require_once('../src/actions/get-artists.php');
 
 // Filtrar portafolios activos
 $artistas = array_filter($artistas, function ($artista) {
 	return isset($artista['activo']) && $artista['activo'] == 1;
 });
-$truncateWords = include_once('../actions/truncateWords.php');
+$truncateWords = include_once('../src/actions/truncateWords.php');
 
 $djs = obtenerDJs(soloActivos: true);
 

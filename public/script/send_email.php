@@ -28,7 +28,7 @@ try {
     // Obtener el nombre del artista seleccionado
     $artistaSeleccionado = 'No artist selected';
     if (isset($_POST['formCategory']) && is_numeric($_POST['formCategory'])) {
-        $artistas = include_once('../../actions/get-artists.php');
+        $artistas = include_once('../../src/actions/get-artists.php');
         foreach ($artistas as $artista) {
             if ($artista['id'] == $_POST['formCategory']) {
                 $artistaSeleccionado = $artista['nombre'];

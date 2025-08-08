@@ -1,7 +1,7 @@
 <?php
 // Incluye la configuración y otros archivos necesarios
 include('../../config/config.php');
-include_once('../../actions/get-all-portfolios.php');
+include_once('../../src/actions/get-all-portfolios.php');
 
 session_start();
 

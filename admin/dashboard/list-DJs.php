@@ -1,6 +1,6 @@
 <?php
-include_once('../../actions/get-category.php');
-include_once('../../actions/get-all-DJs.php');
+include_once('../../src/actions/get-category.php');
+include_once('../../src/actions/get-all-DJs.php');
 include('../auth/session_check.php');
 
 if (isset($_GET['success']) && $_GET['success'] == 1) {

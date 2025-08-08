@@ -2,7 +2,7 @@
 $selected_categories = [];
 
 include_once('../actions/portfolio-upload-action.php');
-$categoryFunctions = include('../../actions/get-category.php');
+$categoryFunctions = include('../../src/actions/get-category.php');
 
 // Obtener categorías de "design"
 $categorias = call_user_func($categoryFunctions['getMusicCategories']);

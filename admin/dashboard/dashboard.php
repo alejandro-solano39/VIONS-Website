@@ -1,5 +1,5 @@
 <?php 
-include('../../actions/get-category.php');
+include('../../src/actions/get-category.php');
 include('../auth/session_check.php');
 ?>
 
@@ -16,7 +16,7 @@ include('../auth/session_check.php');
 
 <body>
     <div id="artist-page">
-        <form id="artist-form" method="POST" enctype="multipart/form-data" action="../../actions/portfolio-upload-action.php">
+        <form id="artist-form" method="POST" enctype="multipart/form-data" action="../../src/actions/portfolio-upload-action.php">
             <h1>Formulario de Artista</h1>
 
             <div class="profile-image-container">

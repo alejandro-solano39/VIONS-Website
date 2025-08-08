@@ -1,8 +1,8 @@
 <?php
 // Incluir el archivo que obtiene los datos de los DJs y categorías
-$djFunctions = include('../actions/get-all-DJs.php');
-$categoryFunctions = include('../actions/get-category.php');
-$truncateWords = include_once('../actions/truncateWords.php');
+$djFunctions = include('../src/actions/get-all-DJs.php');
+$categoryFunctions = include('../src/actions/get-category.php');
+$truncateWords = include_once('../src/actions/truncateWords.php');
 
 $djs = obtenerDJs(true); // true para obtener solo los DJs activos
 
