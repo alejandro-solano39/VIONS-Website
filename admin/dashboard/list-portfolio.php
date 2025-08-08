@@ -1,6 +1,6 @@
 <?php
-include_once('../../actions/get-category.php');
-include_once('../../actions/get-all-portfolios.php');
+include_once('../../src/actions/get-category.php');
+include_once('../../src/actions/get-all-portfolios.php');
 include('../auth/session_check.php');
 
 $artistas = obtenerArtistas(); // Llama a la función para obtener los datos

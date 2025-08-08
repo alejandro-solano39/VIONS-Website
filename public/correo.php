@@ -46,7 +46,7 @@ EOT;
     $msg = 'Please fill out the form and submit it.';
 }
 
-$artistas = include('../actions/get-artists.php');
+$artistas = include('../src/actions/get-artists.php');
 
 // Filtrar artistas activos
 $artistas = array_filter($artistas, function ($artista) {

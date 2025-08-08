@@ -1,5 +1,5 @@
 <?php
-include_once('../actions/get-portfolio-details.php');
+include_once('../src/actions/get-portfolio-details.php');
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
 	die("ID no especificado o inválido.");

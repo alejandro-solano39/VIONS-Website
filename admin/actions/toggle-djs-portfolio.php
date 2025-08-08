@@ -1,6 +1,6 @@
 <?php
 include('../../config/config.php');
-include_once('../../actions/get-all-DJs.php');
+include_once('../../src/actions/get-all-DJs.php');
 
 session_start();
 

@@ -1,6 +1,6 @@
 <?php
 include('../../auth/session_check.php');
-include_once('../../actions/dashboard-functions.php');
+include_once('../../src/actions/dashboard-functions.php');
 
 // Inicia la sesión si no está activa
 if (session_status() === PHP_SESSION_NONE) {

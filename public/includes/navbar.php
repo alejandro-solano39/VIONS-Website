@@ -1,5 +1,5 @@
 <?php
-include_once('../actions/register_visit.php');
+include_once('../src/actions/register_visit.php');
 ?>
 <nav class="sticky-header main-bar-wraper navbar-expand-lg">
     <div class="main-bar clearfix">

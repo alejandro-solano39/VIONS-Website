@@ -1,7 +1,7 @@
 <?php
-$categorias = require('../actions/get-category.php');
-$artistas = require('../actions/get-all-portfolios.php');
-$truncateWords = include_once('../actions/truncateWords.php');
+$categorias = require('../src/actions/get-category.php');
+$artistas = require('../src/actions/get-all-portfolios.php');
+$truncateWords = include_once('../src/actions/truncateWords.php');
 
 if (!is_array($artistas) || empty($artistas)) {
 	die("Error: No se pudo cargar la lista de portafolios.");

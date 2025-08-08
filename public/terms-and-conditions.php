@@ -1,6 +1,6 @@
 <?php
-$categorias = include('../actions/get-category.php');
-$artistas = include('../actions/get-artists.php');
+$categorias = include('../src/actions/get-category.php');
+$artistas = include('../src/actions/get-artists.php');
 ?>
 
 <!DOCTYPE html>
