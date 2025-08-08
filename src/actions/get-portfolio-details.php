@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . '/../config/config.php');
+include_once(__DIR__ . '/../../config/config.php');
 
 function getPortfolioDetails($id) {
     if (!isset($id) || !is_numeric($id) || $id <= 0) {
