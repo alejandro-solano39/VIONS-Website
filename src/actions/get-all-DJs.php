@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . '/../config/config.php');
+include_once(__DIR__ . '/../../config/config.php');
 
 // Habilitar reportes de errores para MySQLi
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

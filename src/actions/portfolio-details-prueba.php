@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . '/../config/config.php');
+include_once(__DIR__ . '/../../config/config.php');
 
 if (isset($_GET['id'])) {
     // Validar y sanitizar el parámetro 'id'
