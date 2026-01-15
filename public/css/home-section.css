@@ -1,0 +1,619 @@
+.home { 
+    display: flex;
+    justify-content: space-between; /* Divide el espacio entre los elementos */
+    align-items: center; /* Centra verticalmente en pantallas grandes */
+    min-height: 100vh;
+    width: 100vw;
+    padding: 2rem 5%;
+    background: linear-gradient(to bottom, #5651B1, #FFFFFF); /* Degradado inicial */
+    gap: 2rem; /* Espaciado entre la imagen y el texto */
+}
+
+.button-container {
+    display: flex; /* Permite controlar la alineación del botón */
+    justify-content: flex-start; /* Alinea el botón a la izquierda */
+    margin-top: 1rem; /* Espaciado superior del botón */
+}
+
+/* Opcional: Para centrar el botón en pantallas pequeñas */
+@media (max-width: 1000px) {
+    .button-container {
+        justify-content: center; /* Centra el botón horizontalmente */
+    }
+}
+
+/* Estilo del botón */
+.btn.purple {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #6f42c1;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: auto; /* Asegura que el botón no ocupe todo el ancho */
+}
+
+.btn.purple:hover {
+    background-color: #5a34ad;
+    transform: scale(1.05);
+}
+
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 1000px) {
+    .home {
+        flex-direction: column; /* Cambia a disposición en columna */
+        align-items: center; /* Centra todo el contenido */
+        justify-content: center; /* Centra verticalmente */
+        text-align: center; /* Centra el texto */
+        gap: 2rem; /* Espaciado entre imagen y texto */
+    }
+
+    .home .home-img {
+        flex: 0 1 auto; /* Ajusta el tamaño del contenedor */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Centra verticalmente la imagen */
+        max-width: 80%; /* Reduce el ancho */
+    }
+
+    .home .home-img img {
+        width: 70%; /* Imagen ocupa el 70% del contenedor */
+        max-width: 300px; /* Limita el tamaño máximo */
+        margin: 0 auto; /* Centra horizontalmente */
+    }
+
+    .home .home-content {
+        padding: 0;
+        align-items: center; /* Asegura que el texto esté centrado */
+    }
+
+    .home .home-content h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .home .home-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .home .home-content p {
+        font-size: 1.2rem;
+    }
+
+    .submit-btn, .btn.purple {
+        display: block; /* Cambia a bloque */
+        margin: 1rem auto; /* Centra el botón en móviles */
+        width: fit-content; /* Se adapta al contenido */
+    }
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 1000px) {
+    .submit-btn, .btn.purple {
+        display: inline-block; /* Asegura que el botón no ocupe todo el ancho */
+        margin: 0; /* Elimina márgenes laterales */
+        width: auto; /* Ajusta el ancho al contenido */
+        margin-top: 1rem; /* Espaciado superior */
+        margin-left: 0; /* Alineado a la izquierda */
+    }
+}
+
+
+/* Contenedor de la imagen */
+.home .home-img {
+    flex: 0 1 45%; /* Imagen ocupa el 45% del ancho */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Imagen ovalada más pequeña */
+.home .home-img img {
+    width: 90%; /* Imagen ocupa el 90% del contenedor */
+    max-width: 400px; /* Tamaño máximo */
+    aspect-ratio: 4/5; /* Relación de aspecto para hacerla ovalada */
+    border-radius: 50%; /* Da forma ovalada */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 6px solid #fff; /* Borde blanco */
+}
+
+/* Contenedor del contenido */
+.home .home-content {
+    flex: 0 1 50%; /* El contenido ocupa el 50% del ancho */
+    text-align: left;
+    display: flex;
+    flex-direction: column; /* Alinea elementos en columna */
+    justify-content: center; /* Centra verticalmente el texto */
+    height: 100%; /* Para asegurarse de que ocupa todo el alto disponible */
+}
+
+.home .home-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.home .home-content h3 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.home .home-content p {
+    font-size: 1.4rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 1000px) {
+    .home {
+        flex-direction: column; /* Cambia a disposición en columna */
+        align-items: center;
+        justify-content: center; /* Asegura que todos los elementos estén centrados */
+        text-align: center; /* Centra el texto */
+        gap: 2rem; /* Espaciado entre imagen y texto */
+    }
+
+    .home .home-img {
+        flex: 0 1 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Centra verticalmente la imagen */
+        max-width: 80%; /* Reduce el ancho de la imagen */
+    }
+
+    .home .home-img img {
+        width: 70%; /* Imagen ocupa el 70% del contenedor */
+        max-width: 300px; /* Limita el tamaño máximo */
+        margin: 0 auto; /* Centra horizontalmente */
+    }
+
+    .home .home-content {
+        padding: 0;
+        align-items: center; /* Asegura que el texto esté centrado */
+    }
+
+    .home .home-content h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .home .home-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .home .home-content p {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Contenedor principal para las tarjetas de información */
+.info-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2rem auto;
+    max-width: 850px; /* Ajuste del ancho */
+    gap: 2rem;
+}
+
+/* Asegurar que todos los ítems ocupen el mismo espacio */
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1; /* Distribución equitativa del espacio */
+    min-width: 400px; /* Asegura que todos los ítems tengan el mismo tamaño mínimo */
+}
+
+/* Iconos dentro de círculos */
+.icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #5651B1; /* Color morado */
+    border-radius: 50%;
+    color: white;
+    margin-bottom: 1rem; /* Espacio entre el ícono y el texto */
+}
+
+.icon-circle i {
+    font-size: 1.5rem;
+}
+
+/* Texto alineado bajo el ícono */
+.text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-content strong {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.text-content p {
+    font-size: 0.85rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .info-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-item {
+        margin-bottom: 1.5rem;
+    }
+
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .icon-circle i {
+        font-size: 1.2rem;
+    }
+
+    .text-content strong {
+        font-size: 0.9rem;
+    }
+
+    .text-content p {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* Cursor parpadeante para el texto animado */
+.dynamic-text::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+
+
+/* Sección combinada que alinea la sección de diseñador y las tarjetas de información */
+.combined-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5rem 8%; /* Ajuste del padding para más espacio en los lados */
+    background-color: #ffffff;
+    gap: 5rem; /* Mayor separación entre las dos columnas */
+    width: 100vw;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Sección de diseñador */
+.designer-section {
+    flex: 1;
+    max-width: 65%; /* El texto ocupa ahora un 65% del ancho */
+    margin-right: 3rem; /* Espacio lateral derecho reducido */
+}
+
+/* Subtitle styling */
+.subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #8a4cff;
+    margin-bottom: 1rem;
+}
+
+/* Main title styling */
+.title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+/* Description text */
+.description {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    /* color: #666; */
+    margin-bottom: 2.5rem;
+    max-width: 100%; /* Permitir que el texto ocupe más espacio horizontal */
+}
+
+
+/* Estilo para las tarjetas de información */
+.info-cards {
+    position: center; /* Hace que las tarjetas estén fijas en el lado derecho */
+    right: 2%; /* Ajusta esta cantidad para moverlas más a la derecha */
+    top: 10%; /* Ajuste la altura desde la parte superior */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Aumentamos el espacio entre las tarjetas */
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Diseño de las tarjetas */
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #5651B1;
+    border-radius: 50%;
+    color: white;
+}
+
+.icon-circle i {
+    font-size: 1.5rem;
+}
+
+/* Texto alineado bajo el ícono */
+.text-content strong {
+    font-size: 1rem;
+    color: #333;
+}
+
+.text-content p {
+    font-size: 0.85rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Mejor espaciado para pantallas más grandes */
+@media (min-width: 1200px) {
+    .combined-section {
+        padding: 5rem 10%; /* Más padding en pantallas más grandes */
+    }
+}
+
+/* Responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .combined-section {
+        flex-direction: column; /* Cambiamos a columna en pantallas pequeñas */
+        padding: 2rem 5%;
+        text-align: center;
+    }
+
+    .info-cards {
+        position: static; /* Hace que las tarjetas vuelvan a la posición normal en pantallas pequeñas */
+        align-items: center;
+        flex-direction: row; /* Las tarjetas se muestran en fila en pantallas pequeñas */
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .designer-section {
+        margin-right: 0; /* Eliminamos el margen derecho en pantallas pequeñas */
+        max-width: 100%;
+    }
+}
+
+
+/* Contenedor del slider */
+.section-full {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    width: 100%; /* Ocupa todo el ancho */
+    overflow: hidden;
+}
+
+
+.minimal-nav {
+    font-size: 24px; /* Tamaño de las flechas */
+    color: #FFFFFF; /* Color blanco simple */
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.minimal-nav:hover {
+    color: #9B59B6; /* Morado suave al pasar el cursor */
+    transform: scale(1.2); /* Agrandar ligeramente */
+}
+/* Diseño del slider */
+.owl-carousel {
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+.owl-carousel .item {
+    width: 100%; /* Cada elemento ocupa todo el ancho */
+    height: 100vh; /* Cada elemento ocupa toda la altura */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estilo de las imágenes y videos dentro del slider */
+.owl-carousel .item img,
+.owl-carousel .item video {
+    width: 100%; /* Ocupan todo el ancho del slider */
+    height: 100%; /* Ocupan todo el alto del slider */
+    object-fit: cover; /* Cubren todo el espacio sin deformarse */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.owl-carousel .item:hover img,
+.owl-carousel .item:hover video {
+    filter: brightness(50%);
+    transform: scale(1.05);
+}
+
+/* Icono de zoom */
+.zoom-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.zoom-icon svg {
+    fill: white;
+    width: 24px;
+    height: 24px;
+}
+
+/* Mostrar el icono al pasar el cursor */
+.owl-carousel .item:hover .zoom-icon {
+    opacity: 1;
+}
+
+/* Controles de navegación (prev/next) */
+.owl-nav {
+    position: absolute;
+    top: 50%; /* Centrar verticalmente */
+    width: 100%; /* Ocupa todo el ancho */
+    display: flex;
+    justify-content: space-between; /* Botones en extremos opuestos */
+    transform: translateY(-50%); /* Ajuste para centrar */
+    pointer-events: none; /* Permitir interacción solo en los botones */
+}
+
+.owl-nav button {
+    background-color: rgba(111, 66, 193, 0.5) !important;
+    ; /* Fondo morado translúcido */
+    color: white; /* Flechas blancas */
+    border: none;
+    border-radius: 50%; /* Botón circular */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto; /* Hacer clic solo en los botones */
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(111, 66, 193, 0.5); /* Resplandor morado */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 10000000000;
+    
+}
+
+.owl-nav button:hover {
+    background-color: #800080; /* Fondo morado más fuerte */
+    box-shadow: 0px 0px 15px rgba(111, 66, 193, 0.5); /* Resplandor más intenso */
+}
+
+/* Alinear los botones */
+.owl-nav .owl-prev {
+    position: absolute;
+    left: 20px; /* Separación del borde izquierdo */
+}
+
+.owl-nav .owl-next {
+    position: absolute;
+    right: 20px; /* Separación del borde derecho */
+}
+
+/* Puntos de navegación (dots) */
+.owl-dots {
+    position: absolute;
+    bottom: 20px; /* Distancia desde la parte inferior */
+    width: 100%; /* Ocupa todo el ancho */
+    text-align: center;
+}
+
+.owl-dots .owl-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 5px;
+    background: rgba(111, 66, 193, 0.5); /* Puntos morados semitransparentes */
+    border: 2px solid white; /* Borde blanco para contraste */
+    border-radius: 50%; /* Forma circular */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.owl-dots .owl-dot.active {
+    background: #800080; /* Puntos activos en morado más fuerte */
+    transform: scale(1.2); /* Agrandar el punto activo */
+    border-color: #FFD700; /* Borde dorado para resaltar */
+}
+
+
+/* Icono de zoom */
+.zoom-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.zoom-icon svg {
+    fill: white;
+    width: 24px;
+    height: 24px;
+}
+
+/* Mostrar el icono al pasar el cursor */
+.owl-carousel .item:hover .zoom-icon {
+    opacity: 1;
+}
+
+/* Mejor visibilidad de Fancybox */
+.mfp-bg,
+.mfp-wrap {
+    z-index: 10000 !important;
+}
